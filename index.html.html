@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sugarbloom Bakery® — Designer Cakes, Patna</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --cream: #FAF6F0;
+    --blush: #F5E6DC;
+    --rose: #C97B5A;
+    --deep: #3A2218;
+    --mocha: #7A4F38;
+    --muted: #9C7B6A;
+    --white: #FFFFFF;
+    --gold: #C4A05A;
+    --font-display: 'Cormorant Garamond', serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
+  body {
+    background: var(--cream);
+    color: var(--deep);
+    font-family: var(--font-body);
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 4rem;
+    background: rgba(250,246,240,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,123,90,0.15);
+    transition: box-shadow 0.3s;
+  }
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--deep);
+    letter-spacing: 0.02em;
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--rose); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.82rem;
+    font-weight: 400;
+    color: var(--mocha);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--rose); }
+  .nav-cta {
+    background: var(--deep);
+    color: var(--cream) !important;
+    padding: 0.5rem 1.4rem !important;
+    border-radius: 2rem;
+    letter-spacing: 0.08em !important;
+  }
+  .nav-cta:hover { background: var(--rose); color: var(--white) !important; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+  }
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 10rem 4rem 6rem 6rem;
+    position: relative; z-index: 2;
+  }
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--rose);
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block; width: 2rem; height: 1px;
+    background: var(--rose);
+  }
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(3.5rem, 6vw, 6rem);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--deep);
+    margin-bottom: 1.8rem;
+    letter-spacing: -0.01em;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--rose);
+    font-weight: 300;
+  }
+  .hero-desc {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--mocha);
+    max-width: 420px;
+    margin-bottom: 3rem;
+    font-weight: 300;
+  }
+  .hero-actions { display: flex; gap: 1rem; align-items: center; }
+  .btn-primary {
+    background: var(--deep);
+    color: var(--cream);
+    padding: 0.9rem 2.2rem;
+    border-radius: 3rem;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.25s, transform 0.2s;
+  }
+  .btn-primary:hover { background: var(--rose); transform: translateY(-2px); }
+  .btn-ghost {
+    color: var(--deep);
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: flex; align-items: center; gap: 0.5rem;
+    transition: gap 0.2s, color 0.2s;
+  }
+  .btn-ghost:hover { gap: 0.8rem; color: var(--rose); }
+  .hero-right {
+    position: relative;
+    background: var(--blush);
+    overflow: hidden;
+  }
+  .hero-cake-bg {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .cake-art {
+    width: 78%;
+    max-width: 460px;
+    filter: drop-shadow(0 20px 50px rgba(58,34,24,0.18));
+    animation: float 5s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-14px); }
+  }
+  .hero-badge {
+    position: absolute; bottom: 3rem; left: 3rem;
+    background: var(--white);
+    border-radius: 1rem;
+    padding: 1rem 1.5rem;
+    box-shadow: 0 8px 32px rgba(58,34,24,0.1);
+    display: flex; align-items: center; gap: 1rem;
+    animation: fadeUp 1s ease 0.6s both;
+  }
+  .badge-icon {
+    width: 44px; height: 44px;
+    background: var(--blush);
+    border-radius: 0.75rem;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem;
+  }
+  .badge-text p { font-size: 0.75rem; color: var(--muted); margin-bottom: 2px; }
+  .badge-text strong { font-size: 0.9rem; color: var(--deep); font-weight: 500; }
+
+  /* ── MARQUEE ── */
+  .marquee-wrap {
+    background: var(--deep);
+    padding: 1rem 0;
+    overflow: hidden;
+  }
+  .marquee-inner {
+    display: flex; gap: 3rem;
+    animation: marquee 20s linear infinite;
+    white-space: nowrap;
+  }
+  .marquee-inner span {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 300;
+    color: rgba(250,246,240,0.5);
+    font-style: italic;
+    flex-shrink: 0;
+  }
+  .marquee-inner span.dot {
+    color: var(--rose);
+    font-style: normal;
+    font-size: 1.2rem;
+  }
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* ── SECTION COMMON ── */
+  section { padding: 7rem 0; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 4rem; }
+  .section-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .section-label::before {
+    content: '';
+    display: block; width: 1.5rem; height: 1px;
+    background: var(--rose);
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-weight: 300;
+    color: var(--deep);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+  .section-title em { font-style: italic; color: var(--rose); }
+
+  /* ── FEATURES ── */
+  .features { background: var(--white); }
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 4rem;
+    border: 2px solid var(--blush);
+    border-radius: 1.5rem;
+    overflow: hidden;
+  }
+  .feature-card {
+    padding: 3rem 2.5rem;
+    background: var(--white);
+    border-right: 2px solid var(--blush);
+    transition: background 0.3s;
+  }
+  .feature-card:last-child { border-right: none; }
+  .feature-card:hover { background: var(--cream); }
+  .feature-num {
+    font-family: var(--font-display);
+    font-size: 4rem;
+    font-weight: 300;
+    color: var(--blush);
+    line-height: 1;
+    margin-bottom: 1.5rem;
+  }
+  .feature-title {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--deep);
+    margin-bottom: 0.75rem;
+  }
+  .feature-text { font-size: 0.9rem; line-height: 1.7; color: var(--muted); }
+
+  /* ── ABOUT ── */
+  .about { background: var(--cream); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+    margin-top: 4rem;
+  }
+  .about-visual {
+    position: relative;
+    overflow: visible;
+  }
+  .about-img-main {
+    width: 100%;
+    border-radius: 1.5rem;
+    background: var(--blush);
+    aspect-ratio: 4/5;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .about-img-float {
+    position: absolute; bottom: -2rem; right: -2rem;
+    width: 46%;
+    background: var(--white);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 12px 40px rgba(58,34,24,0.12);
+  }
+  .float-stat {
+    font-family: var(--font-display);
+    font-size: 2.8rem;
+    font-weight: 300;
+    color: var(--rose);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+  .float-label { font-size: 0.8rem; color: var(--muted); }
+  .about-content { padding: 2rem 0; }
+  .about-content .section-label { margin-bottom: 1rem; }
+  .about-content .section-title { margin-bottom: 2rem; }
+  .about-text { font-size: 0.95rem; line-height: 1.85; color: var(--mocha); margin-bottom: 1.2rem; }
+  .about-features { list-style: none; margin: 2rem 0; }
+  .about-features li {
+    display: flex; align-items: flex-start; gap: 1rem;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--blush);
+    font-size: 0.88rem;
+    color: var(--mocha);
+  }
+  .about-features li::before {
+    content: '✦';
+    color: var(--rose);
+    font-size: 0.7rem;
+    margin-top: 0.2rem;
+    flex-shrink: 0;
+  }
+
+  /* ── PRICING ── */
+  .pricing { background: var(--deep); }
+  .pricing .section-label { color: var(--gold); }
+  .pricing .section-label::before { background: var(--gold); }
+  .pricing .section-title { color: var(--cream); }
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 4rem;
+  }
+  .price-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 1.5rem;
+    padding: 2.5rem 2rem;
+    transition: border-color 0.3s, background 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .price-card.featured {
+    background: var(--rose);
+    border-color: var(--rose);
+  }
+  .price-card.featured::before {
+    content: 'Most Popular';
+    position: absolute; top: 1.25rem; right: 1.25rem;
+    background: rgba(255,255,255,0.2);
+    color: #fff;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.8rem;
+    border-radius: 2rem;
+  }
+  .price-card:hover:not(.featured) {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.2);
+  }
+  .price-tier {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+  .price-card.featured .price-tier { color: rgba(255,255,255,0.8); }
+  .price-amount {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 300;
+    color: var(--cream);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+  .price-amount span { font-size: 1.2rem; vertical-align: super; }
+  .price-note {
+    font-size: 0.78rem;
+    color: rgba(250,246,240,0.5);
+    margin-bottom: 2rem;
+  }
+  .price-card.featured .price-note { color: rgba(255,255,255,0.7); }
+  .price-list { list-style: none; margin-bottom: 2.5rem; }
+  .price-list li {
+    font-size: 0.88rem;
+    color: rgba(250,246,240,0.75);
+    padding: 0.55rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .price-card.featured .price-list li { color: rgba(255,255,255,0.9); border-color: rgba(255,255,255,0.15); }
+  .price-list li::before { content: '—'; color: var(--gold); font-size: 0.8rem; }
+  .price-card.featured .price-list li::before { color: rgba(255,255,255,0.6); }
+  .btn-outline-light {
+    display: block; width: 100%;
+    text-align: center;
+    padding: 0.85rem;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 3rem;
+    color: var(--cream);
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.25s, border-color 0.25s;
+  }
+  .btn-outline-light:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.4); }
+  .btn-filled-light {
+    display: block; width: 100%;
+    text-align: center;
+    padding: 0.85rem;
+    background: var(--white);
+    border-radius: 3rem;
+    color: var(--rose);
+    font-weight: 500;
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .btn-filled-light:hover { opacity: 0.9; }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials { background: var(--cream); }
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 4rem;
+  }
+  .testi-card {
+    background: var(--white);
+    border-radius: 1.5rem;
+    padding: 2.5rem;
+    border: 1px solid var(--blush);
+    transition: box-shadow 0.3s;
+  }
+  .testi-card:hover { box-shadow: 0 8px 32px rgba(58,34,24,0.07); }
+  .testi-stars { color: var(--gold); font-size: 0.9rem; margin-bottom: 1.5rem; }
+  .testi-quote {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    line-height: 1.65;
+    color: var(--deep);
+    font-style: italic;
+    font-weight: 300;
+    margin-bottom: 2rem;
+  }
+  .testi-author { display: flex; align-items: center; gap: 0.75rem; }
+  .testi-avatar {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    background: var(--blush);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--rose);
+  }
+  .testi-name { font-size: 0.88rem; font-weight: 500; color: var(--deep); }
+  .testi-loc { font-size: 0.78rem; color: var(--muted); }
+
+  /* ── TEAM ── */
+  .team { background: var(--blush); }
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 4rem;
+  }
+  .team-card {
+    text-align: center;
+    background: var(--white);
+    border-radius: 1.5rem;
+    padding: 2rem 1.5rem;
+    border: 1px solid rgba(201,123,90,0.15);
+    transition: transform 0.3s;
+  }
+  .team-card:hover { transform: translateY(-6px); }
+  .team-avatar {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    background: var(--blush);
+    margin: 0 auto 1.2rem;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: var(--rose);
+    font-style: italic;
+  }
+  .team-name {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--deep);
+    margin-bottom: 0.3rem;
+  }
+  .team-role { font-size: 0.78rem; color: var(--muted); letter-spacing: 0.05em; }
+
+  /* ── CONTACT ── */
+  .contact { background: var(--white); }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 5rem;
+    margin-top: 4rem;
+  }
+  .contact-info h3 {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--deep);
+    margin-bottom: 2rem;
+  }
+  .contact-item {
+    display: flex; align-items: flex-start; gap: 1rem;
+    margin-bottom: 1.8rem;
+  }
+  .contact-icon {
+    width: 42px; height: 42px; flex-shrink: 0;
+    background: var(--blush);
+    border-radius: 0.75rem;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+  }
+  .contact-detail p { font-size: 0.78rem; color: var(--muted); margin-bottom: 3px; text-transform: uppercase; letter-spacing: 0.1em; }
+  .contact-detail a, .contact-detail span {
+    font-size: 0.92rem;
+    color: var(--deep);
+    text-decoration: none;
+    font-weight: 400;
+  }
+  .contact-detail a:hover { color: var(--rose); }
+  .form-card {
+    background: var(--cream);
+    border-radius: 1.5rem;
+    padding: 3rem;
+  }
+  .form-title {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--deep);
+    margin-bottom: 2rem;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+  .form-group { display: flex; flex-direction: column; margin-bottom: 1rem; }
+  .form-group label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 0.5rem; }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background: var(--white);
+    border: 1px solid var(--blush);
+    border-radius: 0.75rem;
+    padding: 0.85rem 1rem;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--deep);
+    outline: none;
+    transition: border-color 0.2s;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+  }
+  .form-group select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239C7B6A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
+    cursor: pointer;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--rose); }
+  .form-group textarea { min-height: 110px; resize: vertical; }
+  .btn-submit {
+    width: 100%;
+    padding: 1rem;
+    background: var(--deep);
+    color: var(--cream);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 3rem;
+    cursor: pointer;
+    transition: background 0.25s, transform 0.2s;
+    margin-top: 0.5rem;
+  }
+  .btn-submit:hover { background: var(--rose); transform: translateY(-2px); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--deep);
+    padding: 4rem 0 2rem;
+  }
+  .footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 4rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    margin-bottom: 2rem;
+  }
+  .footer-brand .nav-logo { color: var(--cream); }
+  .footer-brand p {
+    font-size: 0.88rem;
+    color: rgba(250,246,240,0.5);
+    line-height: 1.8;
+    margin-top: 1rem;
+    max-width: 300px;
+  }
+  .footer-heading {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+  }
+  .footer-links { list-style: none; }
+  .footer-links li { margin-bottom: 0.75rem; }
+  .footer-links a {
+    font-size: 0.88rem;
+    color: rgba(250,246,240,0.6);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--cream); }
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-copy { font-size: 0.8rem; color: rgba(250,246,240,0.35); }
+  .footer-reg {
+    font-size: 0.8rem;
+    color: rgba(250,246,240,0.35);
+    font-family: var(--font-display);
+    font-style: italic;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── WHATSAPP ── */
+  .whatsapp-btn {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    background: #25D366;
+    color: #fff;
+    text-decoration: none;
+    padding: 0.85rem 1.6rem;
+    border-radius: 3rem;
+    font-size: 0.88rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    margin-top: 0.5rem;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .whatsapp-btn:hover { background: #1ebe5d; transform: translateY(-2px); }
+
+  .whatsapp-float {
+    position: fixed; bottom: 2rem; right: 2rem; z-index: 999;
+    display: flex; align-items: center; gap: 0.6rem;
+    background: #25D366;
+    color: #fff;
+    text-decoration: none;
+    padding: 0.85rem 1.4rem 0.85rem 1.1rem;
+    border-radius: 3rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    box-shadow: 0 6px 24px rgba(37,211,102,0.35);
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    animation: fadeUp 1s ease 1s both;
+  }
+  .whatsapp-float:hover {
+    background: #1ebe5d;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 32px rgba(37,211,102,0.45);
+  }
+  .whatsapp-float .wa-pulse {
+    position: absolute; top: -3px; right: -3px;
+    width: 12px; height: 12px;
+    background: #ff4444;
+    border-radius: 50%;
+    border: 2px solid white;
+    animation: pulse 2s ease infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.3); opacity: 0.7; }
+  }
+
+  /* ── MOBILE MENU ── */
+  #hamburger {
+    display: none;
+    background: none; border: none; cursor: pointer;
+    font-size: 1.4rem; color: var(--deep);
+    padding: 0.2rem 0.4rem;
+  }
+  #mobile-menu {
+    display: none; flex-direction: column;
+    position: fixed; top: 60px; left: 0; right: 0; z-index: 99;
+    background: rgba(250,246,240,0.98);
+    backdrop-filter: blur(12px);
+    padding: 1.5rem 2rem 2rem;
+    border-bottom: 1px solid var(--blush);
+    gap: 1.2rem;
+  }
+  #mobile-menu a {
+    font-size: 1rem; color: var(--deep); text-decoration: none;
+    font-family: var(--font-display); font-style: italic;
+    border-bottom: 1px solid var(--blush); padding-bottom: 0.8rem;
+  }
+  #mobile-menu a:last-child { border-bottom: none; color: var(--rose); font-style: normal; font-weight: 500; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 2rem; }
+    .nav-links { display: none; }
+    #hamburger { display: block; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { padding: 8rem 2rem 4rem; }
+    .hero-right { min-height: 70vw; }
+    .features-grid, .pricing-grid, .testimonials-grid { grid-template-columns: 1fr; }
+    .team-grid { grid-template-columns: repeat(2, 1fr); }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .container { padding: 0 2rem; }
+    .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+    .form-row { grid-template-columns: 1fr; }
+    .about-img-float { right: 0; bottom: -1rem; }
+    .whatsapp-float { bottom: 1.2rem; right: 1.2rem; font-size: 0.78rem; padding: 0.75rem 1.1rem 0.75rem 0.9rem; }
+    .hero-badge { bottom: 1.5rem; left: 1.5rem; padding: 0.75rem 1rem; }
+    section { padding: 5rem 0; }
+  }
+  @media (max-width: 480px) {
+    .team-grid { grid-template-columns: 1fr 1fr; }
+    .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+    .hero-title { font-size: clamp(2.8rem, 10vw, 4rem); }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAVBAR ── -->
+<nav>
+  <a href="#" class="nav-logo">Sugar<span>bloom</span>®</a>
+  <ul class="nav-links">
+    <li><a href="#features">Offerings</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#contact" class="nav-cta">Order Now</a></li>
+  </ul>
+  <button id="hamburger" aria-label="Menu">&#9776;</button>
+</nav>
+<!-- Mobile menu -->
+<div id="mobile-menu">
+  <a href="#features">Offerings</a>
+  <a href="#about">About</a>
+  <a href="#pricing">Pricing</a>
+  <a href="#testimonials">Reviews</a>
+  <a href="#team">Team</a>
+  <a href="#contact">Order Now</a>
+</div>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Designer Cakes · Patna</p>
+    <h1 class="hero-title">Where Every<br>Cake Tells<br>a <em>Story</em></h1>
+    <p class="hero-desc">Handcrafted designer cakes for life's most cherished moments. From elegant weddings to whimsical birthdays — made with artistry and love.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Order a Custom Cake</a>
+      <a href="#pricing" class="btn-ghost">See Pricing →</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-cake-bg">
+      <svg class="cake-art" viewBox="0 0 400 460" xmlns="http://www.w3.org/2000/svg">
+        <!-- Plate -->
+        <ellipse cx="200" cy="400" rx="160" ry="22" fill="#EDD5C0" opacity="0.6"/>
+        <!-- Cake base layer -->
+        <rect x="60" y="310" width="280" height="88" rx="16" fill="#F5E6DC"/>
+        <rect x="60" y="310" width="280" height="20" rx="8" fill="#EAD0BC"/>
+        <!-- Frosting drips base -->
+        <path d="M70 310 Q80 298 90 310 Q100 298 110 310 Q120 298 130 310 Q140 298 150 310 Q160 298 170 310 Q180 298 190 310 Q200 298 210 310 Q220 298 230 310 Q240 298 250 310 Q260 298 270 310 Q280 298 290 310 Q300 298 310 310 Q320 298 330 310" stroke="#C97B5A" stroke-width="2" fill="none"/>
+        <!-- Middle layer -->
+        <rect x="90" y="210" width="220" height="100" rx="14" fill="#FAF0E8"/>
+        <rect x="90" y="210" width="220" height="18" rx="8" fill="#F0D8C6"/>
+        <!-- Frosting drips mid -->
+        <path d="M98 210 Q108 198 118 210 Q128 198 138 210 Q148 198 158 210 Q168 198 178 210 Q188 198 198 210 Q208 198 218 210 Q228 198 238 210 Q248 198 258 210 Q268 198 278 210 Q288 198 298 210" stroke="#C97B5A" stroke-width="1.5" fill="none"/>
+        <!-- Top layer -->
+        <rect x="120" y="120" width="160" height="92" rx="12" fill="#FDF6F0"/>
+        <rect x="120" y="120" width="160" height="16" rx="7" fill="#F5E0D0"/>
+        <!-- Frosting drips top -->
+        <path d="M128 120 Q138 108 148 120 Q158 108 168 120 Q178 108 188 120 Q198 108 208 120 Q218 108 228 120 Q238 108 248 120 Q258 108 268 120" stroke="#C97B5A" stroke-width="1.5" fill="none"/>
+        <!-- Flowers on top -->
+        <circle cx="200" cy="95" r="10" fill="#C97B5A"/>
+        <circle cx="200" cy="84" r="7" fill="#E8A882"/>
+        <circle cx="213" cy="95" r="6" fill="#E8A882"/>
+        <circle cx="187" cy="95" r="6" fill="#E8A882"/>
+        <circle cx="200" cy="106" r="6" fill="#E8A882"/>
+        <circle cx="200" cy="95" r="4" fill="#FAF6F0"/>
+        <!-- Candles -->
+        <rect x="160" y="78" width="8" height="28" rx="4" fill="#C4A05A"/>
+        <ellipse cx="164" cy="76" rx="3" ry="5" fill="#FFD97A"/>
+        <rect x="232" y="78" width="8" height="28" rx="4" fill="#C97B5A"/>
+        <ellipse cx="236" cy="76" rx="3" ry="5" fill="#FFD97A"/>
+        <!-- Decorative dots base layer -->
+        <circle cx="100" cy="350" r="4" fill="#C97B5A" opacity="0.5"/>
+        <circle cx="150" cy="360" r="3" fill="#C4A05A" opacity="0.5"/>
+        <circle cx="250" cy="355" r="4" fill="#C97B5A" opacity="0.5"/>
+        <circle cx="300" cy="345" r="3" fill="#C4A05A" opacity="0.5"/>
+        <!-- Decorative flowers base -->
+        <circle cx="120" cy="340" r="7" fill="#E8A882" opacity="0.7"/>
+        <circle cx="280" cy="342" r="7" fill="#E8A882" opacity="0.7"/>
+        <!-- Decorative berries -->
+        <circle cx="140" cy="250" r="6" fill="#A84A3A" opacity="0.8"/>
+        <circle cx="258" cy="248" r="6" fill="#A84A3A" opacity="0.8"/>
+        <circle cx="200" cy="246" r="5" fill="#A84A3A" opacity="0.7"/>
+        <!-- Stars/sparkles -->
+        <text x="40" y="180" font-size="20" fill="#C4A05A" opacity="0.5">✦</text>
+        <text x="340" y="240" font-size="14" fill="#C97B5A" opacity="0.4">✦</text>
+        <text x="340" y="160" font-size="10" fill="#C4A05A" opacity="0.4">✦</text>
+      </svg>
+    </div>
+    <div class="hero-badge">
+      <div class="badge-icon">🎂</div>
+      <div class="badge-text">
+        <p>Open Today</p>
+        <strong>10:30 AM – 9:30 PM</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MARQUEE ── -->
+<div class="marquee-wrap">
+  <div class="marquee-inner">
+    <span>Custom Wedding Cakes</span><span class="dot">✦</span>
+    <span>Birthday Creations</span><span class="dot">✦</span>
+    <span>Anniversary Cakes</span><span class="dot">✦</span>
+    <span>Designer Desserts</span><span class="dot">✦</span>
+    <span>Theme Cakes</span><span class="dot">✦</span>
+    <span>Fondant Artistry</span><span class="dot">✦</span>
+    <span>Premium Flavours</span><span class="dot">✦</span>
+    <span>Custom Wedding Cakes</span><span class="dot">✦</span>
+    <span>Birthday Creations</span><span class="dot">✦</span>
+    <span>Anniversary Cakes</span><span class="dot">✦</span>
+    <span>Designer Desserts</span><span class="dot">✦</span>
+    <span>Theme Cakes</span><span class="dot">✦</span>
+    <span>Fondant Artistry</span><span class="dot">✦</span>
+    <span>Premium Flavours</span><span class="dot">✦</span>
+  </div>
+</div>
+
+<!-- ── FEATURES ── -->
+<section class="features" id="features">
+  <div class="container">
+    <p class="section-label fade-up">What We Offer</p>
+    <h2 class="section-title fade-up">Crafted with<br>Passion &amp; <em>Precision</em></h2>
+    <div class="features-grid">
+      <div class="feature-card fade-up">
+        <div class="feature-num">01</div>
+        <h3 class="feature-title">Custom Design Cakes</h3>
+        <p class="feature-text">Every cake is a canvas. We create bespoke designs tailored to your vision — from classic elegance to bold themes, each piece is a one-of-a-kind edible artwork.</p>
+      </div>
+      <div class="feature-card fade-up">
+        <div class="feature-num">02</div>
+        <h3 class="feature-title">Unique Flavour Combinations</h3>
+        <p class="feature-text">Beyond the visual, we delight your palate. Explore inventive flavour pairings crafted from premium ingredients for a taste as unforgettable as the occasion.</p>
+      </div>
+      <div class="feature-card fade-up">
+        <div class="feature-num">03</div>
+        <h3 class="feature-title">Personalised Service</h3>
+        <p class="feature-text">We work closely with you through every step — understanding your theme, preferences, and occasion to deliver a cake that exceeds every expectation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual fade-up">
+        <div class="about-img-main">
+          <svg viewBox="0 0 300 380" xmlns="http://www.w3.org/2000/svg" style="width:85%">
+            <!-- Bakery shop illustration -->
+            <rect x="20" y="100" width="260" height="230" rx="12" fill="#FFFFFF" opacity="0.7"/>
+            <rect x="20" y="100" width="260" height="50" rx="12" fill="#C97B5A"/>
+            <rect x="20" y="130" width="260" height="20" fill="#C97B5A"/>
+            <text x="150" y="132" text-anchor="middle" font-family="Georgia,serif" font-size="15" fill="#FAF6F0" font-style="italic">Sugarbloom Bakery®</text>
+            <!-- Window -->
+            <rect x="50" y="170" width="80" height="80" rx="8" fill="#F5E6DC"/>
+            <line x1="90" y1="170" x2="90" y2="250" stroke="#EDD5C0" stroke-width="1.5"/>
+            <line x1="50" y1="210" x2="130" y2="210" stroke="#EDD5C0" stroke-width="1.5"/>
+            <!-- Door -->
+            <rect x="165" y="195" width="70" height="105" rx="8" fill="#EDD5C0"/>
+            <circle cx="225" cy="250" r="4" fill="#C4A05A"/>
+            <line x1="200" y1="195" x2="200" y2="300" stroke="#D9C0A8" stroke-width="1"/>
+            <!-- Display cakes in window -->
+            <circle cx="70" cy="200" r="12" fill="#F5CAB0"/>
+            <rect x="62" y="209" width="16" height="8" rx="3" fill="#FAEAE0"/>
+            <circle cx="110" cy="200" r="10" fill="#E8A882"/>
+            <rect x="103" y="208" width="14" height="7" rx="3" fill="#FAEAE0"/>
+            <!-- Awning stripes -->
+            <path d="M20 100 L20 115 L280 115 L280 100" fill="#A84A3A" opacity="0.3"/>
+            <!-- Stars -->
+            <text x="30" y="90" font-size="16" fill="#C4A05A" opacity="0.6">✦</text>
+            <text x="260" y="85" font-size="12" fill="#C97B5A" opacity="0.5">✦</text>
+          </svg>
+        </div>
+        <div class="about-img-float">
+          <div class="float-stat">500+</div>
+          <div class="float-label">Custom cakes delivered</div>
+        </div>
+      </div>
+      <div class="about-content fade-up">
+        <p class="section-label">Our Story</p>
+        <h2 class="section-title">More than a<br>Bakery — an <em>Art Studio</em></h2>
+        <p class="about-text">Sugarbloom Bakery® was born from a simple belief: every celebration deserves a cake as unique as the moment itself. Nestled in the heart of Patna, we've been turning dreams into edible masterpieces.</p>
+        <p class="about-text">From intimate birthday gatherings to grand wedding receptions, our team of passionate artisans brings creativity and precision to every order.</p>
+        <ul class="about-features">
+          <li>Handcrafted designs with meticulous attention to detail</li>
+          <li>Premium quality ingredients in every creation</li>
+          <li>Flexible sizing from intimate to grand-scale tiers</li>
+          <li>Direct communication for completely custom orders</li>
+          <li>Traditional to modern and themed creations available</li>
+        </ul>
+        <a href="tel:+916207328302" class="btn-primary">Call to Order: +91 62073 28302</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRICING ── -->
+<section class="pricing" id="pricing">
+  <div class="container">
+    <p class="section-label fade-up">Pricing Tiers</p>
+    <h2 class="section-title fade-up">A Cake for Every <em>Celebration</em></h2>
+    <div class="pricing-grid">
+      <div class="price-card fade-up">
+        <p class="price-tier">Classic</p>
+        <div class="price-amount"><span>₹</span>799</div>
+        <p class="price-note">starting per kg</p>
+        <ul class="price-list">
+          <li>Standard designs</li>
+          <li>2–3 flavour options</li>
+          <li>Up to 2 kg</li>
+          <li>48-hour lead time</li>
+        </ul>
+        <a href="#contact" class="btn-outline-light">Order Classic</a>
+      </div>
+      <div class="price-card featured fade-up">
+        <p class="price-tier">Signature</p>
+        <div class="price-amount"><span>₹</span>1,499</div>
+        <p class="price-note">starting per kg</p>
+        <ul class="price-list">
+          <li>Custom theme design</li>
+          <li>Premium flavours</li>
+          <li>Up to 5 kg</li>
+          <li>Fondant artistry</li>
+          <li>72-hour lead time</li>
+        </ul>
+        <a href="#contact" class="btn-filled-light">Order Signature</a>
+      </div>
+      <div class="price-card fade-up">
+        <p class="price-tier">Grand</p>
+        <div class="price-amount"><span>₹</span>2,999</div>
+        <p class="price-note">starting per kg</p>
+        <ul class="price-list">
+          <li>Multi-tier wedding cakes</li>
+          <li>Exclusive flavour design</li>
+          <li>Any size available</li>
+          <li>Full custom artistry</li>
+          <li>5-day lead time</li>
+        </ul>
+        <a href="#contact" class="btn-outline-light">Order Grand</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<section class="testimonials" id="testimonials">
+  <div class="container">
+    <p class="section-label fade-up">Happy Customers</p>
+    <h2 class="section-title fade-up">What Our Patrons <em>Say</em></h2>
+    <div class="testimonials-grid">
+      <div class="testi-card fade-up">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"The wedding cake was an absolute showstopper. Every guest was asking about it — both the design and the taste were beyond what we imagined."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">PS</div>
+          <div>
+            <p class="testi-name">Priya Sharma</p>
+            <p class="testi-loc">Wedding Client, Patna</p>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card fade-up">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"Ordered a themed birthday cake for my daughter — the detail was extraordinary. Sugarbloom truly brings your ideas to life with such artistry."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">RK</div>
+          <div>
+            <p class="testi-name">Rahul Kumar</p>
+            <p class="testi-loc">Birthday Order, Boring Rd</p>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card fade-up">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">"Premium ingredients, stunning presentation, and the most helpful team. Our anniversary cake was not just beautiful — it tasted absolutely divine."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">AV</div>
+          <div>
+            <p class="testi-name">Anjali Verma</p>
+            <p class="testi-loc">Anniversary Cake, Patna</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TEAM ── -->
+<section class="team" id="team">
+  <div class="container">
+    <p class="section-label fade-up">The Artisans</p>
+    <h2 class="section-title fade-up">Meet the <em>Dreamers</em><br>Behind the Cakes</h2>
+    <div class="team-grid">
+      <div class="team-card fade-up">
+        <div class="team-avatar">A</div>
+        <p class="team-name">Ananya Singh</p>
+        <p class="team-role">Head Pastry Chef</p>
+      </div>
+      <div class="team-card fade-up">
+        <div class="team-avatar">R</div>
+        <p class="team-name">Rohit Mishra</p>
+        <p class="team-role">Fondant Artist</p>
+      </div>
+      <div class="team-card fade-up">
+        <div class="team-avatar">M</div>
+        <p class="team-name">Meera Jha</p>
+        <p class="team-role">Flavour Specialist</p>
+      </div>
+      <div class="team-card fade-up">
+        <div class="team-avatar">K</div>
+        <p class="team-name">Karan Tiwari</p>
+        <p class="team-role">Design Consultant</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section class="contact" id="contact">
+  <div class="container">
+    <p class="section-label fade-up">Get in Touch</p>
+    <h2 class="section-title fade-up">Let's Create<br>Your <em>Perfect Cake</em></h2>
+    <div class="contact-grid">
+      <div class="contact-info fade-up">
+        <h3>Visit or Call Us</h3>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div class="contact-detail">
+            <p>Address</p>
+            <span>Shop No. 6, Harihar Chambers, Boring Rd, Chauraha, Patna, Bihar 800001</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div class="contact-detail">
+            <p>Phone</p>
+            <a href="tel:+916207328302">+91 62073 28302</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🕙</div>
+          <div class="contact-detail">
+            <p>Opening Hours — All Days</p>
+            <span>10:30 AM – 9:30 PM</span>
+          </div>
+        </div>
+        <a href="https://wa.me/916207328302?text=Hi%20Sugarbloom%20Bakery!%20I%27d%20like%20to%20place%20a%20custom%20cake%20order." target="_blank" class="whatsapp-btn">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Chat on WhatsApp
+        </a>
+      </div>
+      <div class="form-card fade-up">
+        <p class="form-title">Request a Custom Cake</p>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="f-name">Your Name</label>
+            <input id="f-name" type="text" placeholder="Full name">
+          </div>
+          <div class="form-group">
+            <label for="f-phone">Phone Number</label>
+            <input id="f-phone" type="tel" placeholder="+91 XXXXX XXXXX">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="f-occasion">Occasion</label>
+            <select id="f-occasion">
+              <option>Wedding</option>
+              <option>Birthday</option>
+              <option>Anniversary</option>
+              <option>Corporate Event</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="f-date">Desired Date</label>
+            <input id="f-date" type="date">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="f-desc">Describe Your Dream Cake</label>
+          <textarea id="f-desc" placeholder="Theme, colours, size, any special design ideas..."></textarea>
+        </div>
+        <button class="btn-submit" onclick="this.textContent='Request Sent! We\'ll call you soon ✦'; this.style.background='#3A2218';">Send My Request</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo">Sugar<span style="color:var(--rose)">bloom</span>®</a>
+        <p>Designer cake store in Patna crafting visually stunning, delicious custom cakes for every special occasion.</p>
+      </div>
+      <div>
+        <p class="footer-heading">Navigate</p>
+        <ul class="footer-links">
+          <li><a href="#features">Offerings</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#testimonials">Reviews</a></li>
+          <li><a href="#contact">Order Now</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-heading">Contact</p>
+        <ul class="footer-links">
+          <li><a href="tel:+916207328302">+91 62073 28302</a></li>
+          <li><a href="#">Boring Rd, Patna 800001</a></li>
+          <li><a href="#">10:30 AM – 9:30 PM Daily</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 Sugarbloom Bakery®. All rights reserved.</p>
+      <p class="footer-reg">Crafting sweet memories in Patna</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ── WHATSAPP FLOAT ── -->
+<a href="https://wa.me/916207328302?text=Hi%20Sugarbloom%20Bakery!%20I%27d%20like%20to%20place%20a%20custom%20cake%20order." target="_blank" class="whatsapp-float">
+  <span class="wa-pulse"></span>
+  <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  Order on WhatsApp
+</a>
+
+<script>
+  /* Scroll-triggered nav shadow */
+  window.addEventListener('scroll', () => {
+    document.querySelector('nav').style.boxShadow =
+      window.scrollY > 10 ? '0 2px 20px rgba(58,34,24,0.08)' : 'none';
+  });
+
+  /* Fade-up on scroll */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  /* Form: WhatsApp redirect on submit with pre-filled message */
+  document.querySelector('.btn-submit').addEventListener('click', function () {
+    const name = document.getElementById('f-name').value.trim();
+    const phone = document.getElementById('f-phone').value.trim();
+    const occasion = document.getElementById('f-occasion').value;
+    const date = document.getElementById('f-date').value;
+    const desc = document.getElementById('f-desc').value.trim();
+    if (!name) { document.getElementById('f-name').style.borderColor='#C97B5A'; document.getElementById('f-name').focus(); return; }
+    let msg = `Hi Sugarbloom Bakery! I'd like to order a cake.\nName: ${name}`;
+    if (phone) msg += `\nPhone: ${phone}`;
+    msg += `\nOccasion: ${occasion}`;
+    if (date) msg += `\nDate: ${date}`;
+    if (desc) msg += `\nDetails: ${desc}`;
+    this.textContent = 'Redirecting to WhatsApp ✦';
+    this.style.background = '#25D366';
+    setTimeout(() => window.open(`https://wa.me/916207328302?text=${encodeURIComponent(msg)}`, '_blank'), 600);
+  });
+
+  /* Mobile nav hamburger */
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  hamburger.addEventListener('click', () => {
+    const open = mobileMenu.style.display === 'flex';
+    mobileMenu.style.display = open ? 'none' : 'flex';
+    hamburger.innerHTML = open ? '&#9776;' : '&#10005;';
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      mobileMenu.style.display = 'none';
+      hamburger.innerHTML = '&#9776;';
+    });
+  });
+</script>
+</body>
+</html>
